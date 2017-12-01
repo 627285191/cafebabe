@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <parent>
+        <artifactId>cafebabe</artifactId>
+        <groupId>com.cafebabe</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+    </properties>
+
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>cafebabe-web</artifactId>
+    <packaging>jar</packaging>
+    <name>cafebabe-web</name>
+    <dependencies>
+        <!-- 以下是前端JS及CSS样式的引入部分 -->
+        <!-- webjar管理 -->
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>webjars-locator</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.webjars.bower</groupId>
+            <artifactId>jquery</artifactId>
+            <version>1.12.4</version>
+        </dependency>
+        <dependency>
+            <groupId>org.webjars.bower</groupId>
+            <artifactId>bootstrap</artifactId>
+            <version>3.3.7</version>
+        </dependency>
+        <!-- bootstrap-日期框 -->
+        <dependency>
+            <groupId>org.webjars.bower</groupId>
+            <artifactId>bootstrap-daterangepicker</artifactId>
+            <version>2.1.25</version>
+        </dependency>
+        <dependency>
+            <groupId>org.webjars.bower</groupId>
+            <artifactId>smalot-bootstrap-datetimepicker</artifactId>
+            <version>2.4.4</version>
+        </dependency>
+        <!-- bootstrap-文件上传 -->
+        <dependency>
+            <groupId>org.webjars.bower</groupId>
+            <artifactId>bootstrap-fileinput</artifactId>
+            <version>4.4.2</version>
+        </dependency>
+        <!-- bootstrap-表格 -->
+        <dependency>
+            <groupId>org.webjars.bower</groupId>
+            <artifactId>bootstrap-table</artifactId>
+            <version>1.11.1</version>
+        </dependency>
+        <!-- bootstrap-验证框 -->
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>bootstrapvalidator</artifactId>
+            <version>0.5.3</version>
+        </dependency>
+        <dependency>
+            <groupId>org.webjars.bower</groupId>
+            <artifactId>echarts</artifactId>
+            <version>3.7.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.webjars.bower</groupId>
+            <artifactId>jquery.cookie</artifactId>
+            <version>1.4.1</version>
+        </dependency>
+        <!-- 对话框 -->
+        <dependency>
+            <groupId>org.webjars.bower</groupId>
+            <artifactId>github-com-craftpip-jquery-confirm</artifactId>
+            <version>3.3.2</version>
+        </dependency>
+        <!-- 重置CSS样式 -->
+        <dependency>
+            <groupId>org.webjars.bower</groupId>
+            <artifactId>normalize.css</artifactId>
+            <version>7.0.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>html5shiv</artifactId>
+            <version>3.7.3</version>
+        </dependency>
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>respond</artifactId>
+            <version>1.4.2</version>
+        </dependency>
+        <!-- 模块相关 -->
+        <dependency>
+            <groupId>com.cafebabe</groupId>
+            <artifactId>cafebabe-common</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.cafebabe</groupId>
+            <artifactId>cafebabe-log</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.cafebabe</groupId>
+            <artifactId>cafebabe-sys</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.cafebabe</groupId>
+            <artifactId>cafebabe-wechat</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.cafebabe</groupId>
+            <artifactId>cafebabe-blog</artifactId>
+        </dependency>
+    </dependencies>
+<build>
+    <!--编译jsp文件-->
+    <resources>
+        <resource>
+            <directory>${basedir}/src/main/resources</directory>
+            <includes>
+                <include>**/**</include>
+            </includes>
+            <filtering>false</filtering>
+        </resource>
+        <resource>
+            <directory>${basedir}/src/main/webapp</directory>
+            <targetPath>META-INF/resources</targetPath>
+            <includes>
+                <include>**/**</include>
+            </includes>
+        </resource>
+    </resources>
+
+    <plugins>
+        <!-- 将工程构建为可直接运行的jar文件 -->
+        <plugin>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-maven-plugin</artifactId>
+        </plugin>
+        <!--编译Java代码-->
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.6.1</version>
+            <configuration>
+                <source>1.8</source>
+                <target>1.8</target>
+                <encoding>UTF-8</encoding>
+                <compilerArgs>
+                    <arg>-parameters</arg>
+                </compilerArgs>
+                <useIncrementalCompilation>false</useIncrementalCompilation>
+            </configuration>
+        </plugin>
+    </plugins>
+</build>
+
+</project>

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="false">
+    <!--定义日志文件的存储地址 勿在 LogBack 的配置中使用相对路径-->
+    <springProfile name="dev-win">
+        <property name="LOG_HOME" value="C:/Users/Administrator/Desktop/mmd-app-logs/"/>
+    </springProfile>
+    <springProfile name="pro">
+        <property name="LOG_HOME" value="/mmd-app-logs/"/>
+    </springProfile>
+    <springProfile name="test">
+        <property name="LOG_HOME" value="/mmd-app-logs/"/>
+    </springProfile>
+
+    <!-- 控制台输出 -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符-->
+            <!--<pattern>%d{yyyy-MM-dd HH:mm:ss,SSS} %-5p ~ %m%n</pattern>-->
+            <!--<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n</pattern>-->
+            <pattern>[ %-5level][%date{yyyy-MM-dd HH:mm:ss.SSS}][%thread] %logger{96} [%line] - %msg%n</pattern>
+
+        </encoder>
+    </appender>
+
+    <!-- 按照每天生成日志文件 -->
+    <!-- 按照每天生成日志文件 -->
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <!--日志文件输出的文件名-->
+            <FileNamePattern>${LOG_HOME}/logs.log.%d{yyyy-MM-dd}.%i.log</FileNamePattern>
+            <!--日志文件保留天数-->
+            <maxFileSize>100MB</maxFileSize>
+            <maxHistory>60</maxHistory>
+            <totalSizeCap>20GB</totalSizeCap>
+        </rollingPolicy>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符-->
+            <pattern>[ %-5level][%date{yyyy-MM-dd HH:mm:ss.SSS}][%thread] %logger{96} [%line] - %msg%n</pattern>
+        </encoder>
+        <!--日志文件最大的大小-->
+        <!--<triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">-->
+        <!--<MaxFileSize>0.1MB</MaxFileSize>-->
+        <!--</triggeringPolicy>-->
+    </appender>
+
+    <!-- 错误日志相关配置 -->
+    <appender name="ERROR-OUT" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <encoder>
+            <pattern>[ %-5level][%date{yyyy-MM-dd HH:mm:ss.SSS}][%thread] %logger{96} [%line] - %msg%n</pattern>
+        </encoder>
+        <!-- 日志级别过滤器 -->
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <!-- 过滤的级别 -->
+            <level>ERROR</level>
+            <!-- 匹配时的操作：接收（记录） -->
+            <onMatch>ACCEPT</onMatch>
+            <!-- 不匹配时的操作：拒绝（不记录） -->
+            <onMismatch>DENY</onMismatch>
+        </filter>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_HOME}/error.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <maxFileSize>100MB</maxFileSize>
+            <maxHistory>60</maxHistory>
+            <totalSizeCap>20GB</totalSizeCap>
+        </rollingPolicy>
+    </appender>
+
+    <!--redis作为Logstash日志收集的数据来源配置,将日志通过redis,传入到logstash-->
+    <!--数据输入到 excel 服务器上暂存，logstash 则连上 excel 服务器取走-->
+    <!--一旦数据被logstash取走,数据将会从redis服务器中被删除-->
+    <!--<appender name="RedisLog" class="com.cwbase.logback.RedisAppender">-->
+    <!--&lt;!&ndash;type 可定为项目类型&ndash;&gt;-->
+    <!--<type>mmt_front</type>-->
+    <!--&lt;!&ndash;excel ip&ndash;&gt;-->
+    <!--<host>172.16.20.199</host>-->
+    <!--<password>mmtvip833036</password>-->
+    <!--<database>2</database>-->
+    <!--&lt;!&ndash;redis存放的key&ndash;&gt;-->
+    <!--&lt;!&ndash;这边配置的key,要和logstash上配置的保持一致,否侧拿不到&ndash;&gt;-->
+    <!--<key>logstash:excel</key>-->
+    <!--<tags>excel-input</tags>-->
+    <!--<mdc>true</mdc>-->
+    <!--<location>true</location>-->
+    <!--<callerStackIndex>0</callerStackIndex>-->
+    <!--</appender>-->
+
+    <!-- show parameters for hibernate sql 专为 Hibernate 定制 -->
+    <!--<logger name="org.hibernate.type.descriptor.sql.BasicBinder" level="TRACE"/>-->
+    <!--<logger name="org.hibernate.type.descriptor.sql.BasicExtractor" level="DEBUG"/>-->
+    <!--<logger name="org.hibernate.SQL" level="DEBUG"/>-->
+    <!--<logger name="org.hibernate.engine.QueryParameters" level="DEBUG"/>-->
+    <!--<logger name="org.hibernate.engine.query.HQLQueryPlan" level="DEBUG"/>-->
+
+    <!--myibatis log configure-->
+    <!--<logger name="com.apache.ibatis" level="TRACE"/>-->
+    <!--<logger name="java.sql.Connection" level="DEBUG"/>-->
+    <!--<logger name="java.sql.Statement" level="DEBUG"/>-->
+    <!--<logger name="java.sql.PreparedStatement" level="DEBUG"/>-->
+
+    <!-- 基于INFO处理日志 -->
+    <root level="INFO">
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="FILE"/>
+        <appender-ref ref="ERROR-OUT"/>
+        <!--<appender-ref ref="RedisLog"/>-->
+    </root>
+
+    <!-- 异步记录文件 -->
+    <appender name="asyncFileAppender" class="ch.qos.logback.classic.AsyncAppender">
+        <discardingThreshold>0</discardingThreshold>
+        <queueSize>500</queueSize>
+        <appender-ref ref="FILE"/>
+        <appender-ref ref="ERROR-OUT"/>
+    </appender>
+
+
+    <!--多环境日志-->
+    <!--对应开发环境-->
+    <springProfile name="dev">
+        <root level="INFO">
+            <appender-ref ref="consoleAppender"/>
+            <appender-ref ref="asyncFileAppender"/>
+        </root>
+    </springProfile>
+    <!--对应单元测试环境-->
+    <springProfile name="junit">
+        <root level="INFO">
+            <appender-ref ref="consoleAppender"/>
+            <appender-ref ref="asyncFileAppender"/>
+        </root>
+    </springProfile>
+    <!--对应测试环境-->
+    <springProfile name="test">
+        <root level="DEBUG">
+            <!--<appender-ref ref="asyncFileAppender"/>-->
+            <appender-ref ref="STDOUT"/>
+        </root>
+    </springProfile>
+    <!--对应生产环境-->
+    <springProfile name="pro">
+        <root level="INFO">
+            <appender-ref ref="asyncFileAppender"/>
+        </root>
+    </springProfile>
+</configuration>

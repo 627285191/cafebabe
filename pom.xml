@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.cafebabe</groupId>
+    <artifactId>cafebabe</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <name>cafebabe</name>
+    <description>考拉的咖啡屋</description>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>1.5.8.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+
+    <properties>
+        <!-- 项目版本号 -->
+        <cafebabe.version>1.0-SNAPSHOT</cafebabe.version>
+
+        <poi.version>3.17</poi.version>
+
+        <ant.version>1.10.1</ant.version>
+
+        <shiro.version>1.4.0</shiro.version>
+        <start-class>com.cafebabe.CafebabeApplication</start-class>
+    </properties>
+
+    <!--系统模板-->
+    <modules>
+        <module>cafebabe-common</module>
+        <module>cafebabe-log</module>
+        <module>cafebabe-sys</module>
+        <module>cafebabe-wechat</module>
+        <module>cafebabe-web</module>
+        <module>cafebabe-blog</module>
+    </modules>
+
+    <!--全局依赖-->
+    <dependencies>
+        <!--为spring boot增加jsp支持-->
+        <!-- 增加jstl支持 -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+        </dependency>
+
+        <!--以下两个部署到外部tomcat时，scope要改成provided的-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <!--<scope>provided</scope>-->
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-jasper</artifactId>
+            <!--<scope>provided</scope>-->
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.drtrang</groupId>
+            <artifactId>druid-spring-boot-starter</artifactId>
+            <version>1.1.3</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-web</artifactId>
+            <version>${shiro.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-cas</artifactId>
+            <version>${shiro.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-core</artifactId>
+            <version>${shiro.version}</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.apache.shiro/shiro-spring -->
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-spring</artifactId>
+            <version>${shiro.version}</version>
+        </dependency>
+        <!-- shiro ehcache -->
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-ehcache</artifactId>
+            <version>${shiro.version}</version>
+        </dependency>
+
+        <!-- spring boot 默认日志为logback，默认引入core和classic，以下是logback的web端支持 -->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-access</artifactId>
+        </dependency>
+        <!--
+        @NoArgsConstructor: 自动生成无参数构造函数。
+        @AllArgsConstructor: 自动生成全参数构造函数。
+        @Data: 自动为所有字段添加@ToString, @EqualsAndHashCode, @Getter方法，为非final字段添加@Setter,和@RequiredArgsConstructor!
+        @Getter 和@Setter 会帮忙创建get set方法 boolean属性会创建is方法
+        @Cleanup: 自动帮我们调用close()方法。（关闭流）
+        @NonNull: 可以帮助我们避免空指针，加到参数上，如果为空报空指针异常。
+        @Slf4j 引入日志
+        https://projectlombok.org/features/all?spm=5176.100239.blogcont59972.9.6h5sm7
+        -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+        <!-- ehchache -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-cache</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+        <!-- websocket、webmvc、tomcat、jackson、logback -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-websocket</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <!--热部署模块 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <optional>true</optional> <!-- 这个需要为 true 热部署才有效 -->
+        </dependency>
+        <!-- 生成数据元文件 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
+    </dependencies>
+
+    <!-- 使子项目沿用版本号，只是对版本进行管理，不会实际引入jar -->
+    <dependencyManagement>
+        <dependencies>
+            <!-- poi dependencies -->
+            <dependency>
+                <groupId>org.apache.poi</groupId>
+                <artifactId>poi</artifactId>
+                <version>${poi.version}</version>
+            </dependency>
+            <!-- poi xlsx支持 -->
+            <dependency>
+                <groupId>org.apache.poi</groupId>
+                <artifactId>poi-ooxml</artifactId>
+                <version>${poi.version}</version>
+            </dependency>
+            <!-- poi word、ppt、viso、outlook支持 -->
+            <dependency>
+                <groupId>org.apache.poi</groupId>
+                <artifactId>poi-scratchpad</artifactId>
+                <version>${poi.version}</version>
+            </dependency>
+            <!--
+            https://mvnrepository.com/artifact/org.apache.ant/ant
+            使用ant中部分zip功能
+             -->
+            <dependency>
+                <groupId>org.apache.ant</groupId>
+                <artifactId>ant</artifactId>
+                <version>${ant.version}</version>
+            </dependency>
+
+            <!-- 模块相关 -->
+            <dependency>
+                <groupId>com.cafebabe</groupId>
+                <artifactId>cafebabe-common</artifactId>
+                <version>${cafebabe.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.cafebabe</groupId>
+                <artifactId>cafebabe-log</artifactId>
+                <version>${cafebabe.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.cafebabe</groupId>
+                <artifactId>cafebabe-sys</artifactId>
+                <version>${cafebabe.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.cafebabe</groupId>
+                <artifactId>cafebabe-wechat</artifactId>
+                <version>${cafebabe.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.cafebabe</groupId>
+                <artifactId>cafebabe-web</artifactId>
+                <version>${cafebabe.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.cafebabe</groupId>
+                <artifactId>cafebabe-blog</artifactId>
+                <version>${cafebabe.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+
+</project>
