@@ -64,11 +64,11 @@
             <artifactId>tomcat-embed-jasper</artifactId>
             <!--<scope>provided</scope>-->
         </dependency>
-
+        <!-- 阿里德鲁伊连接池 spring boot支持 -->
         <dependency>
-            <groupId>com.github.drtrang</groupId>
+            <groupId>com.alibaba</groupId>
             <artifactId>druid-spring-boot-starter</artifactId>
-            <version>1.1.3</version>
+            <version>1.1.5</version>
         </dependency>
 
 

@@ -131,9 +131,8 @@
     </springProfile>
     <!--对应测试环境-->
     <springProfile name="test">
-        <root level="DEBUG">
-            <!--<appender-ref ref="asyncFileAppender"/>-->
-            <appender-ref ref="STDOUT"/>
+        <root level="INFO">
+            <appender-ref ref="asyncFileAppender"/>
         </root>
     </springProfile>
     <!--对应生产环境-->
