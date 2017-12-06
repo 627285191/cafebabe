@@ -21,7 +21,7 @@ import javax.servlet.MultipartConfigElement;
  * <p>version: 1.0 2017/10/23
  */
 @Configuration
-public class BlogWebMvcAutoConfiguration extends WebMvcConfigurerAdapter {
+public class CafebabeWebMvcAutoConfiguration extends WebMvcConfigurerAdapter {
     @Resource
     private UtilInterceptor utilInterceptor;
 

@@ -2,6 +2,7 @@ package com.cafebabe.autoconfigure.logback;
 
 import ch.qos.logback.access.ViewStatusMessagesServlet;
 import ch.qos.logback.access.tomcat.LogbackValve;
+import com.alibaba.druid.spring.boot.autoconfigure.properties.DruidStatProperties;
 import org.apache.catalina.Valve;
 import org.springframework.boot.context.embedded.EmbeddedServletContainerFactory;
 import org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainerFactory;
