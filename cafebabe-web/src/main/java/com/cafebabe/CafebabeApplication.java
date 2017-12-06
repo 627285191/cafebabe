@@ -2,7 +2,9 @@ package com.cafebabe;
 
 
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
 
@@ -12,7 +14,7 @@ import org.springframework.boot.web.support.SpringBootServletInitializer;
  * @author 李德华
  */
 @SpringBootApplication
-//@MapperScan(basePackages = DruidProperties.PACKAGE)
+
 public class CafebabeApplication extends SpringBootServletInitializer{
 	/**
 	 * 产生一个可部署war包的第一步是提供一个SpringBootServletInitializer子类，并实现其configure方法。（web.xml）
