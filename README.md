@@ -16,10 +16,10 @@ controller主要负责转发、service主要负责业务逻辑、dao主要是数
    
    类型|说明|前缀规范
    ---|:---:|---
-   表|TABLE|`T_`
-   视图|VIEW|`V_(与普通变量相同)`
-   索引|INDEX|`IDX_`
-   主键约束|PRIMARY KEY|`PK_`
+   表|TABLE|<font color=red>T_</font>
+   视图|VIEW|<font color=red>V_(与普通变量相同)</font>
+   索引|INDEX|<font color=red>IDX_</font>
+   主键约束|PRIMARY KEY|<font color=red>PK_</font>
    外键约束|FOREIGN KEY|`FK_`
    唯一约束|UNIQUE KEY|`UK_`
    序列(oracle)|SEQUENCE|`SEQ_`
