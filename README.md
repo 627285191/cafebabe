@@ -1,5 +1,15 @@
-#cafebabe
-spring boot 搭建的一个企业级快速开发脚手架。
+## 前言 
+cafebabe是spring boot 搭建的一个企业级快速开发脚手架。
+## 目录
+
+* [技术栈](#技术栈)
+
+* [编码约定](#命名规范)
+
+* [文件名称约定](#文件名称约定)
+
+* [controller、service、dao方法名称约定](#controller、service、dao方法名称约定)
+
 ###技术栈
 1. Spring Boot <p>
 2. MySQL<p>
@@ -7,18 +17,18 @@ spring boot 搭建的一个企业级快速开发脚手架。
 4. Bootstrap <p>
 5. mybatis <p>
 
-#编码约定
+##编码约定
 系统分为controller、service、dao层。
 controller主要负责转发、service主要负责业务逻辑、dao主要是数据库的操作。
 
-###文件名称约定
+##文件名称约定
 
 
-###controller、service、dao方法名称约定
+##controller、service、dao方法名称约定
 
 
 
-###RESTful风格
+##RESTful风格
 GET /zoos：列出所有动物园
 
 POST /zoos：新建一个动物园
