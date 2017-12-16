@@ -16,7 +16,7 @@ controller主要负责转发、service主要负责业务逻辑、dao主要是数
    
    类型|说明|前缀规范
    ---|:---:|---
-   表|TABLE|<font color=red>T_</font>
+   表|TABLE|<font color='red'>T_</font>
    视图|VIEW|<font color=red>V_(与普通变量相同)</font>
    索引|INDEX|<font color=red>IDX_</font>
    主键约束|PRIMARY KEY|<font color=red>PK_</font>
