@@ -45,8 +45,8 @@ controller主要负责转发、service主要负责业务逻辑、dao主要是数
    
 * Java源码命名约定
    * 部分约定节选自阿里巴巴Java开发手册，如下是阿里巴巴编码规约扫描插件的安装方法：
-      * 采用idea作为开发工具的，Settings >> Plugins >> Browse repositories… 搜索Alibaba Java Coding Guidelines插件。
-      * 采用eclipse作为开发工具的，Help >> Install New Software 然后在框中输入URL：https://p3c.alibaba.com/plugin/eclipse/update。
+      * 采用idea作为开发工具的，Settings >> Plugins >> Browse repositories… 搜索`Alibaba Java Coding Guidelines`插件。
+      * 采用eclipse作为开发工具的，Help >> Install New Software 然后在框中输入URL：`https://p3c.alibaba.com/plugin/eclipse/update`。
    * 包的命名
       * 包名统一使用小写，且只能用一个英语单词来表示，不可出现复数形式。包的命名一般都是按照域名+公司名+项目名+具体反映包内容的名字。例如：com.cafebabe.xxx。 
       * 此外，对于包名我们做如下约定:
