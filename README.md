@@ -16,20 +16,20 @@ controller主要负责转发、service主要负责业务逻辑、dao主要是数
    
    类型|说明|前缀规范
    ---|:---:|---
-   表|TABLE|T_
-   视图|VIEW|V_(与普通变量相同)
-   索引|INDEX|IDX_
-   主键约束|PRIMARY KEY|PK_
-   外键约束|FOREIGN KEY|FK_
-   唯一约束|UNIQUE KEY|UK_
-   序列(oracle)|SEQUENCE|SEQ_
-   存储过程|STORE PROCEDURE|PROC_
-   包(oracle)|PACKAGE|PKG_
-   触发器|TRIGGER|TRG_
-   普通变量|VARIABLE|V_
-   游标变量|CURSOR|CUR_
-   输入参数|PARAMETER|P_
-   输出参数|OUT|O_
+   表|TABLE|`T_`
+   视图|VIEW|`V_(与普通变量相同)`
+   索引|INDEX|`IDX_`
+   主键约束|PRIMARY KEY|`PK_`
+   外键约束|FOREIGN KEY|`FK_`
+   唯一约束|UNIQUE KEY|`UK_`
+   序列(oracle)|SEQUENCE|`SEQ_`
+   存储过程|STORE PROCEDURE|`PROC_`
+   包(oracle)|PACKAGE|`PKG_`
+   触发器|TRIGGER|`TRG_`
+   普通变量|VARIABLE|`V_`
+   游标变量|CURSOR|`CUR_`
+   输入参数|PARAMETER|`P_`
+   输出参数|OUT|`O_`
    
    * 数据库表命名均遵循以下约定：
       * 类型名_模块名_存储信息名词，全部小写，例如：t_ch_message
@@ -165,6 +165,6 @@ DELETE：幂等，用来删除资源（delete），返回值可定义为void，h
 * mybatis
 
 ### 项目进展 TODO
-- [x] 前台展示 :bowtie:
+- [x] 前台展示 :smile:
 - [ ] 后台管理 :dizzy_face:
 - [ ] 登陆界面 :dizzy_face:
