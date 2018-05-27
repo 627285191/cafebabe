@@ -1,3 +1,5 @@
+[TOC]
+
 ## 前言 
 cafebabe是spring boot 搭建的一个企业级快速开发脚手架。
 ## 目录
